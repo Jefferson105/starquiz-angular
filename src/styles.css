@@ -1,1 +1,427 @@
 /* You can add global styles to this file, and also import other style files */
+@import url(https://fonts.googleapis.com/css?family=Rajdhani);* {
+    padding: 0;
+    margin: 0; }
+  
+  @font-face {
+    src: url("assets/fonts/Starjout.ttf");
+    font-family: "StarJedi"; }
+  
+  button {
+    background-color: transparent;
+    border: none;
+    font-family: 'Rajdhani', serif;
+    color: #FFF;
+    outline: none; }
+  
+  input {
+    font-family: 'Rajdhani', serif;
+    outline: none; }
+  
+  body {
+    font-family: 'Rajdhani', cursive;
+    color: #FFF;
+    background-color: #000; }
+  
+  h1 {
+    font-family: "StarJedi", cursive;
+    letter-spacing: 2px; }
+    h1 img {
+      height: 2rem; }
+  
+  .fadeIn {
+    opacity: 1;
+    display: block;
+    transition: opacity .5s ease-in, display 0s .5s linear; }
+  
+  .fadeOut {
+    opacity: 0;
+    display: none;
+    transition: opacity .5s ease-in, display 0s .5s linear; }
+  
+  @keyframes bounce {
+    to {
+      transform: translateY(0); }
+    50% {
+      transform: translateY(3px); }
+    to {
+      transform: translateY(0); } }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg); }
+    50% {
+      transform: rotate(360deg); }
+    to {
+      transform: rotate(0deg); } }
+  
+  .loading, .home-overlay, .game-bg, .detail, .finish {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8); }
+  
+  .loading-content, .detail-content, .finish-content {
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 600px;
+    height: 400px;
+    top: calc(50% - 200px);
+    padding: 1rem;
+    box-sizing: border-box;
+    margin: 0 auto;
+    position: relative; }
+  
+  .container {
+    max-width: 1170px;
+    margin: 0 auto; }
+  
+  .footer {
+    margin-top: 2rem;
+    text-align: center; }
+  
+  .loading-title {
+    text-align: center;
+    font-size: 2rem; }
+  
+  .loading-img {
+    height: 10rem;
+    display: block;
+    margin: 3rem auto;
+    animation: rotate 10s infinite;
+    opacity: .7; }
+  
+  .menu {
+    position: absolute;
+    top: 1.5rem;
+    left: 1rem;
+    z-index: 99; }
+    .menu-list {
+      list-style: none;
+      display: flex; }
+      .menu-list-item {
+        text-transform: uppercase;
+        margin-right: .7rem;
+        font-size: 1.3rem;
+        cursor: pointer;
+        transition: all .3s ease; }
+        .menu-list-item:hover {
+          border-bottom: thin solid #FFF; }
+        .menu-list-item a {
+          color: #FFF;
+          text-decoration: none; }
+  
+  .home-header {
+    height: 100vh;
+    position: relative; }
+  
+  .home-mainImg {
+    height: 20rem;
+    display: block;
+    margin: 1rem auto;
+    margin-bottom: -3rem; }
+  
+  .home-title {
+    text-align: center;
+    font-size: 3rem; }
+  
+  .home-txt {
+    text-align: center;
+    margin-bottom: 2rem; }
+  
+  .home-start {
+    display: block;
+    width: 12rem;
+    text-align: center;
+    font-size: 2rem;
+    border: thin solid #FFF;
+    padding: .5rem 0;
+    margin: 0 auto;
+    cursor: pointer;
+    color: #FFF;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold; }
+  
+  .home-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    background-image: url("/static/img/bg-effect.png"); }
+  
+  .home-clip {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    transform: scale(2, 2); }
+  
+  .home-goHow {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%; }
+    .home-goHow-down {
+      height: 4rem;
+      display: block;
+      margin: 0 auto;
+      animation: bounce 1s ease-in-out infinite;
+      cursor: pointer; }
+    .home-goHow-txt {
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.5rem; }
+  
+  .home-how {
+    background-color: #000;
+    padding-top: 1rem; }
+    .home-how-title {
+      font-size: 2rem;
+      margin: 1rem 0; }
+    .home-how p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem; }
+      .home-how p:last-child {
+        margin-bottom: 0; }
+      .home-how p img {
+        height: 1.2rem; }
+  
+  .game-header {
+    padding: .5rem 0;
+    position: relative; }
+    .game-header-pic-img {
+      height: 6.4rem;
+      align-self: flex-start; }
+    .game-header-title {
+      font-size: 4rem;
+      line-height: 3.2rem;
+      text-align: center; }
+    .game-header-counter {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 2rem;
+      display: flex;
+      align-items: center; }
+      .game-header-counter-img {
+        width: 3rem;
+        height: 2rem;
+        margin-right: .5rem;
+        animation: rotate 10s infinite; }
+      .game-header-counter span {
+        width: 4rem; }
+    .game-header-points {
+      position: absolute;
+      top: 3rem;
+      right: 1rem;
+      font-size: 3rem; }
+    .game-header-txt {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 1.5rem; }
+  
+  .game-bg {
+    width: 200vw;
+    height: 200vh;
+    top: -50vh;
+    left: -50vw;
+    background-image: url(https://ak7.picdn.net/shutterstock/videos/28045867/thumb/1.jpg);
+    z-index: -1;
+    animation-duration: 30s;
+    animation-iteration-count: infinite; }
+  
+  .game-content {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center; }
+    .game-content-container {
+      width: 90%;
+      overflow: hidden; }
+    .game-content-button {
+      width: 10%;
+      cursor: pointer; }
+      .game-content-button img {
+        height: 2rem; }
+    .game-content-list {
+      display: flex;
+      list-style: none;
+      transition: all .5s linear;
+      justify-content: space-between; }
+      .game-content-list-item {
+        flex: 0 0 auto;
+        box-sizing: border-box;
+        border-radius: 10px;
+        overflow: hidden;
+        border: thin solid #FFF;
+        width: 20rem;
+        margin-right: calc((100% - 80rem) / 3);
+        margin-bottom: 2rem;
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #000; }
+        @media (max-width: 1440px) {
+          .game-content-list-item {
+            width: 15rem;
+            margin-right: calc((100% - 60rem) / 3); } }
+        .game-content-list-item:nth-of-type(4n) {
+          margin-right: 0; }
+        .game-content-list-item.correct {
+          background-color: rgba(0, 255, 0, 0.1);
+          color: #FFF;
+          text-align: center; }
+        .game-content-list-item.wrong {
+          background-color: rgba(255, 0, 0, 0.1);
+          color: #FFF;
+          text-align: center; }
+        .game-content-list-item-pic {
+          border-bottom: thin solid #FFF;
+          height: 240px;
+          overflow: hidden; }
+          @media (max-width: 1440px) {
+            .game-content-list-item-pic {
+              height: 180px; } }
+          .game-content-list-item-pic-img {
+            width: 100%; }
+        .game-content-list-item-footer-container {
+          display: flex;
+          width: 200%;
+          transition: all .5s ease; }
+          .game-content-list-item-footer-container.show-input {
+            transform: translateX(-50%); }
+        .game-content-list-item-controllers {
+          display: flex;
+          justify-content: center;
+          width: 100%; }
+        .game-content-list-item-button {
+          margin-top: .5rem;
+          cursor: pointer;
+          opacity: .7;
+          transition: all .3s ease; }
+          .game-content-list-item-button img {
+            height: 2rem; }
+          .game-content-list-item-button:hover {
+            opacity: 1; }
+          .game-content-list-item-button-response {
+            margin-left: 2rem; }
+        .game-content-list-item-name {
+          display: flex;
+          width: 100%;
+          align-items: center; }
+          .game-content-list-item-name.show {
+            opacity: 1; }
+          .game-content-list-item-name-back {
+            height: 100%;
+            cursor: pointer;
+            width: 10%;
+            text-align: center; }
+            .game-content-list-item-name-back-img {
+              height: 1.5rem;
+              position: relative;
+              top: calc(50% - .75rem); }
+          .game-content-list-item-name-input {
+            width: 78%;
+            font-size: 1rem;
+            background-color: transparent;
+            border: none;
+            border-bottom: thin solid #FFF;
+            color: #FFF; }
+          .game-content-list-item-name-send {
+            width: 10%;
+            font-size: 1rem;
+            cursor: pointer;
+            height: 100%;
+            margin-left: 2%; }
+            .game-content-list-item-name-send img {
+              height: 1.5rem;
+              position: relative;
+              top: 2px; }
+  
+  .detail-content {
+    min-height: 300px;
+    height: auto; }
+    .detail-content-close {
+      position: absolute;
+      height: 1rem;
+      top: 1rem;
+      right: 1rem;
+      cursor: pointer; }
+  
+  .detail-title {
+    text-align: center;
+    margin-bottom: .5rem; }
+  
+  .detail-photo {
+    float: left;
+    width: 300px;
+    overflow: hidden;
+    margin-right: 1rem; }
+    .detail-photo-img {
+      width: 100%; }
+  
+  .detail-text {
+    margin-left: 1rem; }
+  
+  .finish-content {
+    background-color: rgba(0, 0, 0, 0.9); }
+  
+  .finish-point {
+    font-size: 5rem;
+    text-align: center; }
+  
+  .finish-close {
+    position: absolute;
+    height: 1rem;
+    top: 1rem;
+    right: 1rem; }
+  
+  .finish-title {
+    text-align: center; }
+  
+  .finish-form-content {
+    margin-bottom: 2rem; }
+  
+  .finish-form-label {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: .3rem; }
+  
+  .finish-form-input {
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    border-bottom: thin solid #FFF;
+    width: 100%;
+    color: #FFF;
+    font-family: 'Lora', serif; }
+  
+  .finish-error {
+    color: red;
+    text-align: center; }
+  
+  .finish-save {
+    display: block;
+    width: 12rem;
+    border: thin solid #FFF;
+    font-size: 1.7rem;
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: 3px; }
+  
+  .score-header-subTitle {
+    text-align: center;
+    font-size: 2rem; }
+  
+  .score-list {
+    list-style: none;
+    width: 1170px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: rgba(20, 20, 20, 0.8);
+    border: thin solid #FFF;
+    border-radius: 10px; }
+    .score-list-item {
+      margin-bottom: 1rem;
+      font-size: 1.2rem; }
+  
+  /*# sourceMappingURL=style.css.map*/

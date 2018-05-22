@@ -1,0 +1,137 @@
+<section class="game">
+    <app-main-menu></app-main-menu>
+
+    <header class="game-header">
+        <h1 class="game-header-title">Star<br />Quiz</h1>
+        <p class="game-header-points">{{points}}</p>
+        <div class="game-header-counter">
+            <img class="game-header-counter-img" src="assets/img/star-wars.svg" />
+            <span>{{time}}</span>
+        </div>
+        <p id="text" class="game-header-txt">Do you really know about Star Wars? Test it now!</p>
+    </header>
+     
+    <section *ngIf="showDetails" class="detail">
+        <div class="detail-content">
+            <img (click)="closeDetail()" class="detail-content-close" src="assets/img/close-button.svg" />
+            <h2 class="detail-title">Details</h2>
+            
+            <div class="detail-info">
+                <figure class="detail-photo">
+                    <img class="detail-photo-img" src={{detail.photo}} />
+                </figure>                
+                <div class="detail-text">
+                    <p><b>Birth Year:</b> {{detail.birth_year}}</p>
+                    <p><b>Eye Color:</b> {{detail.eye_color}}</p>
+                    <p><b>Hair color:</b> {{detail.hair_color}}</p>
+                    <p><b>Gender:</b> {{detail.gender}}</p>
+                    <p><b>Height:</b> {{detail.height}}</p>
+                    <p><b>Mass:</b> {{detail.mass}}</p>
+                    <p><b>Skin color:</b> {{detail.skin_color}}</p>
+                    <p><b>Films</b>: {{detail.films}}</p>
+                    
+                    <p *ngIf="detail.homeworld"><b>Homeworld:</b> {{detail.homeworld}}</p>
+                    <p *ngIf="detail.species"><b>Specie:</b> {{detail.species}}</p>
+                    <p *ngIf="detail.vehicles"><b>Vehicles:</b> {{detail.vehicles}}</p>
+                    <p *ngIf="detail.starships"><b>Starships:</b> {{detail.starships}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <nav class="game-content">
+        <button (click)="slideLeft()" class="game-content-button"><img src="assets/img/slide-left.svg" /></button>
+        <div class="game-content-container">
+            <ul [ngStyle]="{'transform': 'translateX('+(-this.slide * 100)+'%)'}" id="list-chars" class="game-content-list">
+                <li *ngFor="let char of chars" class="game-content-list-item" [class.correct]="char.correct == 1" [class.wrong]="char.correct == 0">
+                    <figure class="game-content-list-item-pic"> 
+                        <img class="game-content-list-item-pic-img" src="{{char.photo}}" />
+                    </figure>
+                
+                    <footer class="game-content-list-item-footer" *ngIf="!finished">
+                        <div class="game-content-list-item-footer-container" [class.show-input]="char.showInput" *ngIf="char.correct == 2">
+                            <div class="game-content-list-item-controllers">
+                                <button title="Who am I?" (click)="showHideInput(true, char.id)" class="game-content-list-item-button game-content-list-item-button-show">
+                                    <img src="assets/img/pencil.svg" />
+                                </button>
+                                <button (click)="showDetail(char.id)" title="Character Details" class="game-content-list-item-button game-content-list-item-button-response">
+                                    <img src="assets/img/info.svg" />
+                                </button>
+                            </div>
+                            <div class="game-content-list-item-name">
+                                <figure (click)="showHideInput(false, char.id)" title="Back" class="game-content-list-item-name-back">
+                                    <img class="game-content-list-item-name-back-img" src="assets/img/slide-left.svg" />
+                                </figure>
+                                <input (keyup)="keyInput($event, char.id)" #inputName type="text" class="game-content-list-item-name-input" />
+                                <button (click)="sendName(char.id)" title="Send Response" class="game-content-list-item-name-send">
+                                    <img src="assets/img/send.svg" />
+                                </button>
+                            </div>
+                        </div>
+                        <p *ngIf="char.correct == 1">{{char.name}}</p>
+                        <p *ngIf="char.correct == 0">{{inputName.value}}</p>
+                    </footer>
+                </li>
+            </ul>
+            <ul [ngStyle]="{'transform': 'translateX('+(-this.slide * 100)+'%)'}" id="list-chars-1" #list1 class="game-content-list">
+                <li *ngFor="let char of chars1" class="game-content-list-item" [class.correct]="char.correct == 1" [class.wrong]="char.correct == 0">
+                    <figure class="game-content-list-item-pic"> 
+                        <img class="game-content-list-item-pic-img" src="{{char.photo}}" />
+                    </figure>
+                
+                    <footer class="game-content-list-item-footer" *ngIf="!finished">
+                        <div class="game-content-list-item-footer-container" [class.show-input]="char.showInput" *ngIf="char.correct == 2">
+                            <div class="game-content-list-item-controllers">
+                                <button title="Who am I?" (click)="showHideInput(true, char.id)" class="game-content-list-item-button game-content-list-item-button-show">
+                                    <img src="assets/img/pencil.svg" />
+                                </button>
+                                <button (click)="showDetail(char.id)" title="Character Details" class="game-content-list-item-button game-content-list-item-button-response">
+                                    <img src="assets/img/info.svg" />
+                                </button>
+                            </div>
+                            <div class="game-content-list-item-name">
+                                <figure (click)="showHideInput(false, char.id)" title="Back" class="game-content-list-item-name-back">
+                                    <img class="game-content-list-item-name-back-img" src="assets/img/slide-left.svg" />
+                                </figure>
+                                <input (keyup)="keyInput($event, char.id)" #inputName type="text" class="game-content-list-item-name-input" />
+                                <button (click)="sendName(char.id)" title="Send Response" class="game-content-list-item-name-send">
+                                    <img src="assets/img/send.svg" />
+                                </button>
+                            </div>
+                        </div>
+                        <p *ngIf="char.correct == 1">{{char.name}}</p>
+                        <p *ngIf="char.correct == 0">{{inputName.value}}</p>
+                    </footer>
+                </li>
+            </ul>
+        </div>
+        <button (click)="slideRight()" class="game-content-button"><img src="assets/img/slide-right.svg" /></button>
+    </nav>
+
+    <section *ngIf="finished" class="finish">
+        <div class="finish-content">
+            <h2 class="finish-title">Your pontuation</h2>
+            <p class="finish-point">{{points}}</p>
+
+            <form class="finish-form">
+                <p class="finish-form-content">
+                    <label class="finish-form-label" for="name">Name: </label>
+                    <input class="finish-form-input" #inputUser value="{{name}}" required pattern="[A-Za-zÀ-ú ]+" id="name" type="text" autoFocus />
+                </p>
+                <p class="finish-form-content">
+                    <label class="finish-form-label" for="email">Email: </label>
+                    <input class="finish-form-input" #inputEmail value="{{email}}" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email" type="email" />
+                </p>
+            </form>
+            <p *ngIf="erroMsg" class="finish-error">{{erroMsg}}</p>
+            <button class="finish-save" (click)="savePontuation()">Save</button>
+        </div>
+    </section>
+
+    <footer class="footer">Made by &copy; Jefferson Barbosa</footer>
+
+    <div class="game-bg"></div>
+</section>
+
+<!--<DetailChar info={info} />
+    <FinishGame points={points} /> ${loading ? "fadeIn" : "fadeOut"}-->

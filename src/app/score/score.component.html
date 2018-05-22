@@ -1,0 +1,16 @@
+<section class="score">
+    <app-main-menu></app-main-menu>
+    <header class="score-header">
+        <h1 class="home-title">StarQuiz!</h1>
+        <h2 id="subTitle" class="score-header-subTitle">Score</h2>
+    </header>
+    <ul class="score-list"> 
+        <li *ngFor="let score of scores" class="score-list-item">
+            <p><b>Name:</b> {{score.user}}</p>
+            <p><b>Pontuation:</b> {{score.pontuation}}</p>
+        </li>
+    </ul>
+
+    <footer class="footer">Made by &copy; Jefferson Barbosa</footer>
+    <div className="game-bg"></div>
+</section>
